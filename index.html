@@ -3,145 +3,65 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Briijbhushan Sharma — aspiring Python developer and electronics enthusiast." />
   <title>Portfolio — Briijbhushan Sharma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <style>
-    :root{
-      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#7c5cff; --glass: rgba(255,255,255,0.04);
-    }
-    *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial; margin:0; background:linear-gradient(180deg,#071025 0%, #0b1220 100%); color:#e6eef8; -webkit-font-smoothing:antialiased}
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#7c5cff;--glass:rgba(255,255,255,.04)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:linear-gradient(180deg,#071025,#0b1220);color:#e6eef8;-webkit-font-smoothing:antialiased}
     .container{max-width:1100px;margin:0 auto;padding:24px}
-    header {position:sticky;top:0;backdrop-filter:blur(12px);background:linear-gradient(90deg,rgba(11,18,32,0.7) 60%,rgba(124,92,255,0.08) 100%);border-bottom:2px solid #7c5cff44;box-shadow:0 2px 24px 0 #7c5cff22;z-index:10}
-    nav {display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
-    .brand {font-weight:900;letter-spacing:1.5px;font-size:1.5rem;color:#fff;text-shadow:0 0 8px #7c5cff88,0 0 2px #3ba1ff88;background:linear-gradient(90deg,#7c5cff,#3ba1ff 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .nav-links {display:flex;gap:22px;background:rgba(20,20,40,0.22);border-radius:16px;padding:6px 18px;box-shadow:0 0 12px #7c5cff22;border:1.5px solid #7c5cff33}
-    .nav-links a {color:#b6bfff;text-decoration:none;font-weight:700;font-size:1.08rem;letter-spacing:.5px;position:relative;transition:color .2s}
-    .nav-links a::after {content:'';display:block;position:absolute;left:0;right:0;bottom:-4px;height:2.5px;background:linear-gradient(90deg,#7c5cff,#3ba1ff);border-radius:2px;opacity:0;transform:scaleX(.4);transition:opacity .2s,transform .2s;box-shadow:0 0 8px #7c5cff88}
-    .nav-links a:hover,.nav-links a:focus {color:#fff;text-shadow:0 0 8px #7c5cff88}
-    .nav-links a:hover::after,.nav-links a:focus::after {opacity:1;transform:scaleX(1)}
-    .cta {background:linear-gradient(90deg,#7c5cff,#3ba1ff);color:#fff;padding:8px 18px;border-radius:12px;text-decoration:none;font-weight:900;font-size:1.08rem;letter-spacing:.5px;box-shadow:0 0 8px #7c5cff44;border:2px solid #7c5cff55;transition:box-shadow .3s,border .2s}
-    .cta:hover {box-shadow:0 0 16px #7c5cff88;border:2px solid #3ba1ff}
-    .hero{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:center;padding:48px 0}
-    .intro h1{margin:0 0 8px;font-size:clamp(28px,4vw,42px)}
-    .intro p{margin:0 0 16px;color:var(--muted);line-height:1.6}
-    .buttons{display:flex;gap:12px;flex-wrap:wrap}
-    .profile-card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border-radius:16px;padding:20px;border:1px solid rgba(255,255,255,.03)}
-    .avatar{width:100%;height:260px;background:linear-gradient(135deg,var(--accent),#3ba1ff);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:white;overflow:hidden}
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block;border-radius:10px}
-    section{padding:32px 0;border-top:1px solid rgba(255,255,255,.02)}
-    h2{margin:0 0 18px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-    .card{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,.025)}
-    .card h3{margin:0 0 8px;font-size:18px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-    .card .tags{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
-    .tag{background:var(--glass);padding:6px 8px;border-radius:8px;color:var(--muted);font-size:12px}
-    .skills{display:flex;gap:12px;flex-wrap:wrap}
-    .skill{background:rgba(255,255,255,.03);padding:10px 12px;border-radius:10px;color:var(--muted)}
-    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
-    form{display:flex;flex-direction:column;gap:10px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,.06);color:inherit;padding:10px;border-radius:8px}
-    button[type=submit]{background:var(--accent);color:white;padding:10px;border-radius:8px;border:none;font-weight:700;cursor:pointer}
-    footer{padding:24px 0;color:var(--muted);text-align:center}
-    @media(max-width:860px){.hero{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.nav-links{display:none}}
-    #particles-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;background:transparent}
-    body>.container,header,main,footer{position:relative;z-index:1}
-    .fade-in{opacity:0;transform:translateY(40px) scale(.98);transition:opacity .7s cubic-bezier(.77,0,.18,1),transform .7s cubic-bezier(.77,0,.18,1)}
-    .fade-in.visible{opacity:1;transform:translateY(0) scale(1)}
-    .card.fade-in{transition-delay:.2s}.card.fade-in.visible{transition-delay:0s}
-    .card,.profile-card,.avatar{box-shadow:0 4px 32px rgba(124,92,255,.12),0 1.5px 8px rgba(59,161,255,.08);backdrop-filter:blur(2px);border:1.5px solid rgba(124,92,255,.08)}
-    .avatar{box-shadow:0 0 32px #7c5cff44,0 0 8px #3ba1ff44;border:2px solid #7c5cff;animation:avatarGlow 2.5s infinite alternate}
-    @keyframes avatarGlow{0%{box-shadow:0 0 32px #7c5cff44,0 0 8px #3ba1ff44}100%{box-shadow:0 0 48px #7c5cff88,0 0 16px #3ba1ff88}}
-    h2{position:relative;z-index:1}
-    h2::after{content:'';display:block;width:60px;height:3px;margin-top:6px;background:linear-gradient(90deg,#7c5cff,#3ba1ff);border-radius:2px;box-shadow:0 0 8px #7c5cff88}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    header{position:sticky;top:0;backdrop-filter:blur(12px);background:linear-gradient(90deg,rgba(11,18,32,.88) 60%,rgba(124,92,255,.12));border-bottom:2px solid #7c5cff44;box-shadow:0 2px 24px #7c5cff22;z-index:10}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand{font-weight:900;letter-spacing:1px;font-size:1.25rem;background:linear-gradient(90deg,#7c5cff,#3ba1ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .nav-links{display:flex;gap:20px;background:#14142855;border-radius:16px;padding:8px 16px;border:1px solid #7c5cff33}
+    .nav-links a{color:#b6bfff;text-decoration:none;font-weight:600;font-size:.95rem}.nav-links a:hover{color:white}
+    .cta{display:inline-block;background:linear-gradient(90deg,#7c5cff,#3ba1ff);color:white;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+    .hero{display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:center;padding-top:48px;padding-bottom:48px}
+    .intro h1{margin:0 0 12px;font-size:clamp(30px,5vw,48px);line-height:1.15}.intro p{color:var(--muted);line-height:1.7}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.secondary{display:inline-block;color:var(--muted);padding:9px 13px;border:1px solid #ffffff20;border-radius:9px;text-decoration:none;font-weight:600}
+    .profile-card{background:linear-gradient(180deg,#ffffff08,#ffffff03);border-radius:16px;padding:18px;border:1px solid #7c5cff30;box-shadow:0 4px 32px #7c5cff20}
+    .avatar{width:100%;height:360px;background:linear-gradient(135deg,var(--accent),#3ba1ff);border-radius:12px;overflow:hidden}
+    .avatar img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block}
+    section{padding:32px 0;border-top:1px solid #ffffff08}h2{margin:0 0 18px;position:relative}h2:after{content:'';display:block;width:60px;height:3px;margin-top:7px;background:linear-gradient(90deg,#7c5cff,#3ba1ff);border-radius:2px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.card{background:var(--card);padding:16px;border-radius:12px;border:1px solid #7c5cff20;box-shadow:0 4px 24px #7c5cff12}.card h3{margin:0 0 8px;font-size:18px}.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}.tags{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px}.tag,.skill{background:var(--glass);padding:7px 9px;border-radius:8px;color:var(--muted);font-size:12px}
+    .skills{display:flex;gap:12px;flex-wrap:wrap}.skill{padding:10px 12px;font-size:14px}.contact-grid{display:grid;grid-template-columns:1fr 340px;gap:20px}form{display:flex;flex-direction:column;gap:10px}input,textarea{width:100%;background:#ffffff08;border:1px solid #ffffff20;color:inherit;padding:12px;border-radius:8px;font:inherit}input:focus,textarea:focus{outline:2px solid #7c5cff88}button[type=submit]{font:inherit}footer{padding:24px 0;color:var(--muted);text-align:center}
+    #particles-bg{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}header,main,footer{position:relative;z-index:1}.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.fade-in.visible{opacity:1;transform:none}
+    @media(max-width:860px){.hero,.contact-grid{grid-template-columns:1fr}.profile-card{max-width:420px}.nav-links{display:none}.avatar{height:400px}}
+    @media(max-width:480px){.container{padding:18px}.hero{padding-top:32px}.avatar{height:340px}.buttons .cta,.buttons .secondary{text-align:center}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade-in{opacity:1;transform:none;transition:none}}
   </style>
 </head>
 <body>
   <div id="particles-bg" aria-hidden="true"></div>
-  <header>
-    <div class="container">
-      <nav aria-label="Main navigation">
-        <div class="brand">Briijbhushan Sharma</div>
-        <div class="nav-links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
-        <a class="cta" href="#contact">Work with me</a>
-      </nav>
-    </div>
-  </header>
+  <header><div class="container"><nav aria-label="Main navigation"><div class="brand">Briijbhushan Sharma</div><div class="nav-links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div><a class="cta" href="#contact">Work with me</a></nav></div></header>
   <main class="container">
-    <section class="hero fade-in">
-      <div class="intro">
-        <h1>Hi, I'm Briijbhushan Sharma — aspiring Python Developer</h1>
-        <p>I love building projects in Python and electronics. I enjoy creating apps, automating tasks, and experimenting with Arduino and robotics. My goal is to become a professional Python developer and continue making innovative electronic projects.</p>
-        <div class="buttons"><a class="cta" href="#projects">See my work</a><a style="background:transparent;color:var(--muted);padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.04);text-decoration:none;font-weight:700" href="#contact">Contact</a></div>
-      </div>
-      <aside class="profile-card">
-        <div class="avatar">
-          <img src="../WhatsApp%20Image%202026-08-09%20at%208.56.23%20PM.jpeg" alt="Briijbhushan Sharma" onerror="this.style.display='none';this.parentElement.textContent='Add your photo to the repository'" />
-        </div>
-        <div style="margin-top:12px"><div style="font-weight:700">Briijbhushan Sharma</div><div style="color:var(--muted);font-size:14px;margin-top:6px">Python Developer • Electronics Enthusiast</div></div>
-      </aside>
+    <section class="hero fade-in"><div class="intro"><h1>Hi, I'm Briijbhushan Sharma — aspiring Python Developer</h1><p>I love building projects in Python and electronics. I enjoy creating apps, automating tasks, and experimenting with Arduino and robotics. My goal is to become a professional Python developer and continue making innovative electronic projects.</p><div class="buttons"><a class="cta" href="#projects">See my work</a><a class="secondary" href="#contact">Contact</a></div></div>
+      <aside class="profile-card"><div class="avatar"><img src="profile.jpg" alt="Briijbhushan Sharma" /></div><div style="margin-top:12px"><strong>Briijbhushan Sharma</strong><div style="color:var(--muted);font-size:14px;margin-top:6px">Python Developer • Electronics Enthusiast</div></div></aside>
     </section>
-    <section id="about" class="fade-in">
-      <h2>About Me</h2>
-      <p style="color:var(--muted);max-width:78ch">I'm Briijbhushan Sharma, passionate about Python programming and electronics. I enjoy building apps, working on robotics, and creating useful tools. My projects include AI, task management, phone book apps, and even a robotic hand using Arduino. I aspire to become a Python developer and love working on electronic projects.</p>
-    </section>
-    <section id="projects" class="fade-in">
-      <h2>Projects</h2>
-      <div class="grid">
-        <article class="card fade-in"><h3>Robotic Hand (Arduino)</h3><p>A robotic hand built using Arduino, sensors, and servos. Controlled via code and hardware for precise movement.</p><div class="tags"><span class="tag">Arduino</span><span class="tag">Electronics</span><span class="tag">C/C++</span></div></article>
-        <article class="card fade-in"><h3>Task Management App</h3><p>An app to organize tasks efficiently, built with Python. Helps manage daily work and deadlines.</p><div class="tags"><span class="tag">Python</span><span class="tag">Tkinter</span></div></article>
-        <article class="card fade-in"><h3>Phone Book App</h3><p>A simple phone book application to store and search contacts, made with Python.</p><div class="tags"><span class="tag">Python</span></div></article>
-        <article class="card fade-in"><h3>A.U.R.A AI</h3><p>An AI project for multitasking and automation, built in Python.</p><div class="tags"><span class="tag">Python</span><span class="tag">AI</span></div></article>
-        <article class="card fade-in"><h3>Multitasker App</h3><p>An app that combines multiple utilities for productivity, coded in Python.</p><div class="tags"><span class="tag">Python</span></div></article>
-        <article class="card fade-in"><h3>Chess Game</h3><p>A chess game application built with Python, featuring basic AI and user interface.</p><div class="tags"><span class="tag">Python</span><span class="tag">Game</span></div></article>
-      </div>
-    </section>
-    <section id="skills" class="fade-in">
-      <h2>Skills</h2>
-      <div class="skills"><span class="skill">Python</span><span class="skill">HTML</span><span class="skill">C/C++</span><span class="skill">Arduino</span><span class="skill">Electronics Projects</span><span class="skill">AI</span><span class="skill">Tkinter</span></div>
-    </section>
-    <section id="contact" class="fade-in">
-      <h2>Contact</h2>
-      <div class="contact-grid">
-        <div>
-          <p style="color:var(--muted)">Want to work together? Send a short message and I will reply as soon as I can.</p>
-          <form id="contactForm"><input type="text" id="name" name="name" placeholder="Your name" required /><input type="email" id="email" name="email" placeholder="Email" required /><textarea id="message" name="message" rows="6" placeholder="Message" required></textarea><button type="submit">Send message</button></form>
-        </div>
-        <aside class="profile-card"><h3>Get in touch</h3><p style="color:var(--muted)">Email: <a href="mailto:brijbhushan.2007sharma@gmail.com" style="color:var(--accent)">brijbhushan.2007sharma@gmail.com</a></p><p style="color:var(--muted)">Location: Your City, Country</p></aside>
-      </div>
-    </section>
+    <section id="about" class="fade-in"><h2>About Me</h2><p style="color:var(--muted);max-width:78ch;line-height:1.7">I'm Briijbhushan Sharma, passionate about Python programming and electronics. I enjoy building apps, working on robotics, and creating useful tools. My projects include AI, task management, phone book apps, and even a robotic hand using Arduino. I aspire to become a Python developer and love working on electronic projects.</p></section>
+    <section id="projects" class="fade-in"><h2>Projects</h2><div class="grid">
+      <article class="card"><h3>Robotic Hand (Arduino)</h3><p>A robotic hand built using Arduino, sensors, and servos. Controlled via code and hardware for precise movement.</p><div class="tags"><span class="tag">Arduino</span><span class="tag">Electronics</span><span class="tag">C/C++</span></div></article>
+      <article class="card"><h3>Task Management App</h3><p>An app to organize tasks efficiently, built with Python. Helps manage daily work and deadlines.</p><div class="tags"><span class="tag">Python</span><span class="tag">Tkinter</span></div></article>
+      <article class="card"><h3>Phone Book App</h3><p>A simple phone book application to store and search contacts, made with Python.</p><div class="tags"><span class="tag">Python</span></div></article>
+      <article class="card"><h3>A.U.R.A AI</h3><p>An AI project for multitasking and automation, built in Python.</p><div class="tags"><span class="tag">Python</span><span class="tag">AI</span></div></article>
+      <article class="card"><h3>Multitasker App</h3><p>An app that combines multiple utilities for productivity, coded in Python.</p><div class="tags"><span class="tag">Python</span></div></article>
+      <article class="card"><h3>Chess Game</h3><p>A chess game application built with Python, featuring basic AI and user interface.</p><div class="tags"><span class="tag">Python</span><span class="tag">Game</span></div></article>
+    </div></section>
+    <section id="skills" class="fade-in"><h2>Skills</h2><div class="skills"><span class="skill">Python</span><span class="skill">HTML</span><span class="skill">C/C++</span><span class="skill">Arduino</span><span class="skill">Electronics Projects</span><span class="skill">AI</span><span class="skill">Tkinter</span></div></section>
+    <section id="contact" class="fade-in"><h2>Contact</h2><div class="contact-grid"><div><p style="color:var(--muted)">Want to work together? Send a short message and your email app will open with the message ready to send.</p>
+      <form id="contactForm"><input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required /><input type="email" id="email" name="email" placeholder="Your email" autocomplete="email" required /><textarea id="message" name="message" rows="6" placeholder="Message" required></textarea><button class="cta" type="submit">Open email to send message</button></form>
+      </div><aside class="profile-card"><h3>Get in touch</h3><p style="color:var(--muted)">Email: <a href="mailto:brijbhushan.2007sharma@gmail.com" style="color:#a897ff">brijbhushan.2007sharma@gmail.com</a></p><p style="color:var(--muted)">Location: Your City, Country</p></aside></div></section>
   </main>
   <footer><div class="container">© <span id="year"></span> Briijbhushan Sharma — Built with HTML &amp; CSS</div></footer>
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('contactForm').addEventListener('submit', function(e){
-      e.preventDefault();
-      const name = this.elements.name.value.trim();
-      const email = this.elements.email.value.trim();
-      const message = this.elements.message.value.trim();
-      if(!name || !email || !message){alert('Please fill all fields.');return}
-      const subject = encodeURIComponent('Portfolio contact from ' + name);
-      const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
-      window.location.href = 'mailto:brijbhushan.2007sharma@gmail.com?subject=' + subject + '&body=' + body;
-    });
-    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){
-      const target=document.querySelector(this.getAttribute('href'));
-      if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}
-    }));
-    if(window.tsParticles){
-      tsParticles.load('particles-bg',{
-        fpsLimit:60,background:{color:'transparent'},
-        particles:{number:{value:60,density:{enable:true,area:800}},color:{value:['#7c5cff','#3ba1ff','#fff']},shape:{type:'circle'},opacity:{value:.6,random:true},size:{value:3,random:{enable:true,minimumValue:1}},move:{enable:true,speed:1.5,direction:'none',random:false,straight:false,outModes:{default:'out'}},links:{enable:true,color:'#7c5cff',distance:120,opacity:.3,width:1}},detectRetina:true
-      });
-    }
-    const fadeEls=document.querySelectorAll('.fade-in');
-    if('IntersectionObserver' in window){
-      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.15});
-      fadeEls.forEach(el=>observer.observe(el));
-    }else{fadeEls.forEach(el=>el.classList.add('visible'))}
+    document.getElementById('year').textContent=new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const name=this.elements.name.value.trim();const email=this.elements.email.value.trim();const message=this.elements.message.value.trim();const subject=encodeURIComponent('Portfolio contact from '+name);const body=encodeURIComponent(message+'\n\n— '+name+' ('+email+')');window.location.href='mailto:brijbhushan.2007sharma@gmail.com?subject='+subject+'&body='+body;});
+    if(window.tsParticles){tsParticles.load('particles-bg',{fpsLimit:60,particles:{number:{value:45,density:{enable:true,area:800}},color:{value:['#7c5cff','#3ba1ff','#fff']},opacity:{value:.45,random:true},size:{value:3,random:true},links:{enable:true,color:'#7c5cff',distance:130,opacity:.22,width:1},move:{enable:true,speed:1,outModes:{default:'out'}}},detectRetina:true});}
+    const fadeEls=document.querySelectorAll('.fade-in');if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});fadeEls.forEach(el=>observer.observe(el));}else fadeEls.forEach(el=>el.classList.add('visible'));
   </script>
 </body>
 </html>
