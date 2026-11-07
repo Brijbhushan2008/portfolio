@@ -1,50 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Brijbhushan's personal portfolio website." />
-    <title>Brijbhushan | Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="header">
-      <a class="logo" href="#home">B.</a>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio — Briijbhushan Sharma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#7c5cff; --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial; margin:0; background:linear-gradient(180deg,#071025 0%, #0b1220 100%); color:#e6eef8; -webkit-font-smoothing:antialiased}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header {position:sticky;top:0;backdrop-filter:blur(12px);background:linear-gradient(90deg,rgba(11,18,32,0.7) 60%,rgba(124,92,255,0.08) 100%);border-bottom:2px solid #7c5cff44;box-shadow:0 2px 24px 0 #7c5cff22;z-index:10}
+    nav {display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+    .brand {font-weight:900;letter-spacing:1.5px;font-size:1.5rem;color:#fff;text-shadow:0 0 8px #7c5cff88,0 0 2px #3ba1ff88;background:linear-gradient(90deg,#7c5cff,#3ba1ff 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .nav-links {display:flex;gap:22px;background:rgba(20,20,40,0.22);border-radius:16px;padding:6px 18px;box-shadow:0 0 12px #7c5cff22;border:1.5px solid #7c5cff33}
+    .nav-links a {color:#b6bfff;text-decoration:none;font-weight:700;font-size:1.08rem;letter-spacing:.5px;position:relative;transition:color .2s}
+    .nav-links a::after {content:'';display:block;position:absolute;left:0;right:0;bottom:-4px;height:2.5px;background:linear-gradient(90deg,#7c5cff,#3ba1ff);border-radius:2px;opacity:0;transform:scaleX(.4);transition:opacity .2s,transform .2s;box-shadow:0 0 8px #7c5cff88}
+    .nav-links a:hover,.nav-links a:focus {color:#fff;text-shadow:0 0 8px #7c5cff88}
+    .nav-links a:hover::after,.nav-links a:focus::after {opacity:1;transform:scaleX(1)}
+    .cta {background:linear-gradient(90deg,#7c5cff,#3ba1ff);color:#fff;padding:8px 18px;border-radius:12px;text-decoration:none;font-weight:900;font-size:1.08rem;letter-spacing:.5px;box-shadow:0 0 8px #7c5cff44;border:2px solid #7c5cff55;transition:box-shadow .3s,border .2s}
+    .cta:hover {box-shadow:0 0 16px #7c5cff88;border:2px solid #3ba1ff}
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:32px;align-items:center;padding:48px 0}
+    .intro h1{margin:0 0 8px;font-size:clamp(28px,4vw,42px)}
+    .intro p{margin:0 0 16px;color:var(--muted);line-height:1.6}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .profile-card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border-radius:16px;padding:20px;border:1px solid rgba(255,255,255,.03)}
+    .avatar{width:100%;height:260px;background:linear-gradient(135deg,var(--accent),#3ba1ff);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:white;overflow:hidden}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block;border-radius:10px}
+    section{padding:32px 0;border-top:1px solid rgba(255,255,255,.02)}
+    h2{margin:0 0 18px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+    .card{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,.025)}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .card p{margin:0;color:var(--muted);font-size:14px}
+    .card .tags{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+    .tag{background:var(--glass);padding:6px 8px;border-radius:8px;color:var(--muted);font-size:12px}
+    .skills{display:flex;gap:12px;flex-wrap:wrap}
+    .skill{background:rgba(255,255,255,.03);padding:10px 12px;border-radius:10px;color:var(--muted)}
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    form{display:flex;flex-direction:column;gap:10px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,.06);color:inherit;padding:10px;border-radius:8px}
+    button[type=submit]{background:var(--accent);color:white;padding:10px;border-radius:8px;border:none;font-weight:700;cursor:pointer}
+    footer{padding:24px 0;color:var(--muted);text-align:center}
+    @media(max-width:860px){.hero{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.nav-links{display:none}}
+    #particles-bg{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;background:transparent}
+    body>.container,header,main,footer{position:relative;z-index:1}
+    .fade-in{opacity:0;transform:translateY(40px) scale(.98);transition:opacity .7s cubic-bezier(.77,0,.18,1),transform .7s cubic-bezier(.77,0,.18,1)}
+    .fade-in.visible{opacity:1;transform:translateY(0) scale(1)}
+    .card.fade-in{transition-delay:.2s}.card.fade-in.visible{transition-delay:0s}
+    .card,.profile-card,.avatar{box-shadow:0 4px 32px rgba(124,92,255,.12),0 1.5px 8px rgba(59,161,255,.08);backdrop-filter:blur(2px);border:1.5px solid rgba(124,92,255,.08)}
+    .avatar{box-shadow:0 0 32px #7c5cff44,0 0 8px #3ba1ff44;border:2px solid #7c5cff;animation:avatarGlow 2.5s infinite alternate}
+    @keyframes avatarGlow{0%{box-shadow:0 0 32px #7c5cff44,0 0 8px #3ba1ff44}100%{box-shadow:0 0 48px #7c5cff88,0 0 16px #3ba1ff88}}
+    h2{position:relative;z-index:1}
+    h2::after{content:'';display:block;width:60px;height:3px;margin-top:6px;background:linear-gradient(90deg,#7c5cff,#3ba1ff);border-radius:2px;box-shadow:0 0 8px #7c5cff88}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div id="particles-bg" aria-hidden="true"></div>
+  <header>
+    <div class="container">
       <nav aria-label="Main navigation">
-        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+        <div class="brand">Briijbhushan Sharma</div>
+        <div class="nav-links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div>
+        <a class="cta" href="#contact">Work with me</a>
       </nav>
-      <a class="button button-small" href="#contact">Let's talk</a>
-    </header>
-    <main>
-      <section class="hero container" id="home">
-        <div class="hero-copy">
-          <p class="eyebrow">Hello, I'm</p>
-          <h1>Brijbhushan<span>.</span></h1>
-          <h2>Developer & creative problem solver</h2>
-          <p class="intro">I build thoughtful, responsive websites and digital experiences. I enjoy turning ideas into useful things on the web.</p>
-          <div class="actions"><a class="button" href="#projects">Explore my work <span aria-hidden="true">↗</span></a><a class="text-link" href="#contact">Get in touch</a></div>
-          <p class="availability"><span></span> Open to learning and new opportunities</p>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero fade-in">
+      <div class="intro">
+        <h1>Hi, I'm Briijbhushan Sharma — aspiring Python Developer</h1>
+        <p>I love building projects in Python and electronics. I enjoy creating apps, automating tasks, and experimenting with Arduino and robotics. My goal is to become a professional Python developer and continue making innovative electronic projects.</p>
+        <div class="buttons"><a class="cta" href="#projects">See my work</a><a style="background:transparent;color:var(--muted);padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.04);text-decoration:none;font-weight:700" href="#contact">Contact</a></div>
+      </div>
+      <aside class="profile-card">
+        <div class="avatar">
+          <img src="../WhatsApp%20Image%202026-08-09%20at%208.56.23%20PM.jpeg" alt="Briijbhushan Sharma" onerror="this.style.display='none';this.parentElement.textContent='Add your photo to the repository'" />
         </div>
-        <div class="hero-art" aria-label="Decorative abstract shapes"><div class="orb orb-one"></div><div class="orb orb-two"></div><div class="art-card"><span class="code-mark">&lt;/&gt;</span><span class="art-caption">Ideas, made real.</span></div><div class="sparkle">✳</div></div>
-      </section>
-      <section class="section container" id="about">
-        <div class="section-title"><p class="eyebrow">A little about me</p><h2>Curious by nature.<br /><span>Building for the web.</span></h2></div>
-        <p class="about-copy">I'm Brijbhushan, a developer who loves learning how things work and creating clean, friendly web experiences. This is my corner of the internet to share what I'm learning and the projects I'm proud of.</p>
-      </section>
-      <section class="section skills-section" id="skills">
-        <div class="container"><div class="section-title"><p class="eyebrow">My toolkit</p><h2>Skills I'm growing</h2></div><div class="skills"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive design</span><span>Git & GitHub</span><span>Problem solving</span></div></div>
-      </section>
-      <section class="section container" id="projects">
-        <div class="section-title"><p class="eyebrow">Selected work</p><h2>Things I've made</h2></div>
-        <div class="projects">
-          <article class="project"><div class="project-art art-purple"><span>01</span><b>WEB</b></div><div class="project-info"><p class="project-type">PERSONAL WEBSITE</p><h3>My Portfolio</h3><p>A home for my story, skills, and projects—designed to look great on every screen.</p><span class="pill">HTML · CSS</span></div></article>
-          <article class="project"><div class="project-art art-orange"><span>02</span><b>IDEA</b></div><div class="project-info"><p class="project-type">COMING SOON</p><h3>Next project</h3><p>I'm always experimenting and learning. Check back soon to see what I build next.</p><span class="pill">In progress</span></div></article>
-          <article class="project"><div class="project-art art-blue"><span>03</span><b>BUILD</b></div><div class="project-info"><p class="project-type">COMING SOON</p><h3>Something new</h3><p>Have an idea or want to collaborate? I'd love to hear what you're working on.</p><a class="inline-link" href="#contact">Let's connect ↗</a></div></article>
+        <div style="margin-top:12px"><div style="font-weight:700">Briijbhushan Sharma</div><div style="color:var(--muted);font-size:14px;margin-top:6px">Python Developer • Electronics Enthusiast</div></div>
+      </aside>
+    </section>
+    <section id="about" class="fade-in">
+      <h2>About Me</h2>
+      <p style="color:var(--muted);max-width:78ch">I'm Briijbhushan Sharma, passionate about Python programming and electronics. I enjoy building apps, working on robotics, and creating useful tools. My projects include AI, task management, phone book apps, and even a robotic hand using Arduino. I aspire to become a Python developer and love working on electronic projects.</p>
+    </section>
+    <section id="projects" class="fade-in">
+      <h2>Projects</h2>
+      <div class="grid">
+        <article class="card fade-in"><h3>Robotic Hand (Arduino)</h3><p>A robotic hand built using Arduino, sensors, and servos. Controlled via code and hardware for precise movement.</p><div class="tags"><span class="tag">Arduino</span><span class="tag">Electronics</span><span class="tag">C/C++</span></div></article>
+        <article class="card fade-in"><h3>Task Management App</h3><p>An app to organize tasks efficiently, built with Python. Helps manage daily work and deadlines.</p><div class="tags"><span class="tag">Python</span><span class="tag">Tkinter</span></div></article>
+        <article class="card fade-in"><h3>Phone Book App</h3><p>A simple phone book application to store and search contacts, made with Python.</p><div class="tags"><span class="tag">Python</span></div></article>
+        <article class="card fade-in"><h3>A.U.R.A AI</h3><p>An AI project for multitasking and automation, built in Python.</p><div class="tags"><span class="tag">Python</span><span class="tag">AI</span></div></article>
+        <article class="card fade-in"><h3>Multitasker App</h3><p>An app that combines multiple utilities for productivity, coded in Python.</p><div class="tags"><span class="tag">Python</span></div></article>
+        <article class="card fade-in"><h3>Chess Game</h3><p>A chess game application built with Python, featuring basic AI and user interface.</p><div class="tags"><span class="tag">Python</span><span class="tag">Game</span></div></article>
+      </div>
+    </section>
+    <section id="skills" class="fade-in">
+      <h2>Skills</h2>
+      <div class="skills"><span class="skill">Python</span><span class="skill">HTML</span><span class="skill">C/C++</span><span class="skill">Arduino</span><span class="skill">Electronics Projects</span><span class="skill">AI</span><span class="skill">Tkinter</span></div>
+    </section>
+    <section id="contact" class="fade-in">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div>
+          <p style="color:var(--muted)">Want to work together? Send a short message and I will reply as soon as I can.</p>
+          <form id="contactForm"><input type="text" id="name" name="name" placeholder="Your name" required /><input type="email" id="email" name="email" placeholder="Email" required /><textarea id="message" name="message" rows="6" placeholder="Message" required></textarea><button type="submit">Send message</button></form>
         </div>
-      </section>
-      <section class="contact-section" id="contact"><div class="container contact-inner"><p class="eyebrow">Have a project in mind?</p><h2>Let's make something<br />awesome together.</h2><a class="button button-light" href="mailto:your.email@example.com">Say hello <span aria-hidden="true">↗</span></a><p class="email-note">Update this email address in <code>index.html</code> with yours.</p></div></section>
-    </main>
-    <footer class="footer container"><a class="logo" href="#home">B.</a><p>Made with care by Brijbhushan · <span id="year"></span></p><a href="https://github.com/Brijbhushan2008" target="_blank" rel="noreferrer">GitHub ↗</a></footer>
-    <script src="script.js"></script>
-  </body>
+        <aside class="profile-card"><h3>Get in touch</h3><p style="color:var(--muted)">Email: <a href="mailto:brijbhushan.2007sharma@gmail.com" style="color:var(--accent)">brijbhushan.2007sharma@gmail.com</a></p><p style="color:var(--muted)">Location: Your City, Country</p></aside>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container">© <span id="year"></span> Briijbhushan Sharma — Built with HTML &amp; CSS</div></footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = this.elements.name.value.trim();
+      const email = this.elements.email.value.trim();
+      const message = this.elements.message.value.trim();
+      if(!name || !email || !message){alert('Please fill all fields.');return}
+      const subject = encodeURIComponent('Portfolio contact from ' + name);
+      const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+      window.location.href = 'mailto:brijbhushan.2007sharma@gmail.com?subject=' + subject + '&body=' + body;
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){
+      const target=document.querySelector(this.getAttribute('href'));
+      if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth',block:'start'})}
+    }));
+    if(window.tsParticles){
+      tsParticles.load('particles-bg',{
+        fpsLimit:60,background:{color:'transparent'},
+        particles:{number:{value:60,density:{enable:true,area:800}},color:{value:['#7c5cff','#3ba1ff','#fff']},shape:{type:'circle'},opacity:{value:.6,random:true},size:{value:3,random:{enable:true,minimumValue:1}},move:{enable:true,speed:1.5,direction:'none',random:false,straight:false,outModes:{default:'out'}},links:{enable:true,color:'#7c5cff',distance:120,opacity:.3,width:1}},detectRetina:true
+      });
+    }
+    const fadeEls=document.querySelectorAll('.fade-in');
+    if('IntersectionObserver' in window){
+      const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.15});
+      fadeEls.forEach(el=>observer.observe(el));
+    }else{fadeEls.forEach(el=>el.classList.add('visible'))}
+  </script>
+</body>
 </html>
