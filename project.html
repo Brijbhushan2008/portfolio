@@ -26,7 +26,7 @@
     <section class="readme"><h2>Project README</h2><div class="readme-content loading" id="readme">Loading repository information…</div></section>
     <section class="code-panel" id="code-panel" hidden aria-labelledby="code-heading">
       <h2 id="code-heading">Project code</h2>
-      <div class="code-tools"><label for="code-file">Choose a source file:</label><select id="code-file" hidden></select><span class="code-status" id="code-status" role="status">Choose “View code” to load source files.</span></div>
+      <div class="code-tools"><span class="code-status" id="code-status" role="status">Loading code…</span><select id="code-file" hidden></select></div>
       <div class="code-scroll" id="code-scroll" hidden><pre><code id="source-code"></code></pre></div>
     </section>
     <p class="error" id="error" role="alert" hidden></p>
@@ -96,6 +96,7 @@
       if(!sourceFiles.length){codeStatus.textContent='No supported source files were found in this repository.';return;}
       codeFile.replaceChildren();
       sourceFiles.forEach((file,index)=>{const option=document.createElement('option');option.value=String(index);option.textContent=file.path;codeFile.append(option);});
+      codeFile.value='0';
       codeFile.hidden=false;
       codeStatus.textContent=`${sourceFiles.length} source file${sourceFiles.length===1?'':'s'} available.`;
       codeLoaded=true;
