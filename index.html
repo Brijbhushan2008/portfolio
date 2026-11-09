@@ -42,7 +42,11 @@
   <footer class="container footer"><p>© <span id="year"></span> Brijbhushan Sharma</p><a href="https://github.com/Brijbhushan2008" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a><a href="mailto:brijbhushan.2007sharma@gmail.com">Email ↗</a></footer>
   <script>
     document.getElementById('year').textContent=new Date().getFullYear();
-    if(window.tsParticles&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){tsParticles.load('particles-bg',{fpsLimit:50,particles:{number:{value:58,density:{enable:true,area:850}},color:{value:['#8e72ff','#54c9e8','#ffffff']},opacity:{value:.45,random:true},size:{value:2.6,random:{enable:true,minimumValue:1}},links:{enable:true,color:'#8e72ff',distance:135,opacity:.32,width:1},move:{enable:true,speed:1.1,direction:'none',random:false,straight:false,outModes:{default:'out'}}},detectRetina:true});}
+    window.addEventListener('DOMContentLoaded',()=>{
+      if(window.tsParticles&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        tsParticles.load('particles-bg',{fpsLimit:50,particles:{number:{value:58,density:{enable:true,area:850}},color:{value:['#8e72ff','#54c9e8','#ffffff']},opacity:{value:.45,random:true},size:{value:2.6,random:{enable:true,minimumValue:1}},links:{enable:true,color:'#8e72ff',distance:135,opacity:.32,width:1},move:{enable:true,speed:1.1,direction:'none',random:false,straight:false,outModes:{default:'out'}}},detectRetina:true});
+      }
+    });
   </script>
 </body>
 </html>
