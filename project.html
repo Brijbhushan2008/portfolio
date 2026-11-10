@@ -90,17 +90,17 @@
       const treeResponse=await fetch(`https://api.github.com/repos/${owner}/${encodeURIComponent(repository.name)}/git/trees/${encodeURIComponent(repository.default_branch)}?recursive=1`);
       if(!treeResponse.ok)throw new Error('Could not load the repository file list. Try the View source on GitHub button instead.');
       const tree=await treeResponse.json();
-      const allowed=/\.(py|js|jsx|ts|tsx|html|css|java|c|h|cpp|hpp|ino|json|sh|rb|go|rs|php|sql|md)$/i;
+      const allowed=/\.(py|js|jsx|ts|tsx|html|css|java|c|h|cpp|hpp|ino|sh|rb|go|rs|php|sql)$/i;
       sourceFiles=(tree.tree||[]).filter(file=>file.type==='blob'&&allowed.test(file.path)&&!/(^|\/)(node_modules|vendor|\.git|dist|build)\//i.test(file.path)&&!(/\.min\.(js|css)$/i.test(file.path))&&file.size<=250000).sort((a,b)=>a.path.localeCompare(b.path));
       if(!sourceFiles.length){codeStatus.textContent='No supported source files were found in this repository.';return;}
       codeLoaded=true;
       const firstFile=sourceFiles[0];
-      codeStatus.textContent=`Showing ${firstFile.path}`;
       await showCode(firstFile);
     }
 
     async function showCode(file){
       if(!file)return;
+      codeStatus.textContent=`Loading ${file.path}…`;
       codeScroll.hidden=true;
       try{
         const fileUrl=`https://raw.githubusercontent.com/${owner}/${repository.name}/${encodeURIComponent(repository.default_branch)}/${file.path.split('/').map(encodeURIComponent).join('/')}`;
@@ -114,16 +114,11 @@
 
     async function toggleCode(){
       codePanel.hidden=false;
-      if(codeLoaded){
-        codePanel.scrollIntoView({behavior:'smooth',block:'start'});
-        return;
-      }
+      if(codeLoaded){codePanel.scrollIntoView({behavior:'smooth',block:'start'});return;}
       try{
         await loadSourceFiles();
         codePanel.scrollIntoView({behavior:'smooth',block:'start'});
-      }catch(error){
-        codeStatus.textContent=error.message;
-      }
+      }catch(error){codeStatus.textContent=error.message;}
     }
 
     loadProject().catch(error=>{nameEl.textContent='Project unavailable';descriptionEl.textContent='';readmeEl.textContent='';readmeEl.classList.remove('loading');errorEl.textContent=error.message;errorEl.hidden=false;});
